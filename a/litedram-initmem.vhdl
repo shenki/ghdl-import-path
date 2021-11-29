@@ -58,7 +58,6 @@ architecture rtl of dram_init_mem is
         for i in 0 to (INIT_RAM_SIZE/8)-1 loop
             exit when endfile(ram_file);
             readline(ram_file, ram_line);
-            hread(ram_line, temp_word);
             temp_ram(i*2) := temp_word(31 downto 0);
             temp_ram(i*2+1) := temp_word(63 downto 32);
         end loop;
@@ -72,7 +71,6 @@ architecture rtl of dram_init_mem is
             for i in 0 to RND_PAYLOAD_SIZE-1 loop
                 exit when endfile(payload_file);
                 readline(payload_file, ram_line);
-                hread(ram_line, temp_word);
                 temp_ram((INIT_RAM_SIZE/4) + i*2) := temp_word(31 downto 0);
                 temp_ram((INIT_RAM_SIZE/4) + i*2+1) := temp_word(63 downto 32);
             end loop;

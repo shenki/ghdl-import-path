@@ -1,20 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
 
-entity litedram_wrapper is
+library work;
+use work.all;
 
-end entity litedram_wrapper;
+entity test is
+	port (
+	input : in std_logic
+	);
+end entity test;
 
-architecture behaviour of litedram_wrapper is
-
-
+architecture behaviour of test is
 begin
     -- Init code BRAM memory slave 
     init_ram_0: entity dram_init_mem
-        generic map(
-            EXTRA_PAYLOAD_FILE => PAYLOAD_FILE,
-            EXTRA_PAYLOAD_SIZE => PAYLOAD_SIZE
-            )
         port map(
-            clk => system_clk
+            clk => input
     	);
 
-end architecture behaviour;
+end behaviour;
